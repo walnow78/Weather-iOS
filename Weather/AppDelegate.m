@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import <AFNetworking/UIKit+AFNetworking.h>
+
+#import "LEMSearchTableViewController.h"
+#import "UIViewController+Navigation.h"
 
 @interface AppDelegate ()
 
@@ -20,6 +24,13 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    LEMSearchTableViewController *searchVC = [LEMSearchTableViewController new];
+    
+
+    
+    self.window.rootViewController = [searchVC wrappedInNavigation];
+    
     return YES;
 }
 

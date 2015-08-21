@@ -13,6 +13,11 @@
 		F51C00D61B8602B6001854E7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F51C00D51B8602B6001854E7 /* Images.xcassets */; };
 		F51C00D91B8602B6001854E7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F51C00D71B8602B6001854E7 /* LaunchScreen.xib */; };
 		F51C00E51B8602B7001854E7 /* WeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F51C00E41B8602B7001854E7 /* WeatherTests.m */; };
+		F51C00F01B860D21001854E7 /* LEMSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F51C00EF1B860D21001854E7 /* LEMSearchTableViewController.m */; };
+		F51C00F41B860F4A001854E7 /* LEMSuggestionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F51C00F31B860F4A001854E7 /* LEMSuggestionsTableViewController.m */; };
+		F51C00F71B8611CE001854E7 /* UIViewController+Navigation.m in Sources */ = {isa = PBXBuildFile; fileRef = F51C00F61B8611CE001854E7 /* UIViewController+Navigation.m */; };
+		F52024D51B87130C00AE9CBD /* LEMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52024D31B87130C00AE9CBD /* LEMDetailViewController.m */; };
+		F52024D61B87130C00AE9CBD /* LEMDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52024D41B87130C00AE9CBD /* LEMDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +44,16 @@
 		F51C00DE1B8602B7001854E7 /* WeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F51C00E31B8602B7001854E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F51C00E41B8602B7001854E7 /* WeatherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherTests.m; sourceTree = "<group>"; };
+		F51C00EE1B860D21001854E7 /* LEMSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEMSearchTableViewController.h; sourceTree = "<group>"; };
+		F51C00EF1B860D21001854E7 /* LEMSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEMSearchTableViewController.m; sourceTree = "<group>"; };
+		F51C00F21B860F4A001854E7 /* LEMSuggestionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEMSuggestionsTableViewController.h; sourceTree = "<group>"; };
+		F51C00F31B860F4A001854E7 /* LEMSuggestionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEMSuggestionsTableViewController.m; sourceTree = "<group>"; };
+		F51C00F51B8611CE001854E7 /* UIViewController+Navigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Navigation.h"; sourceTree = "<group>"; };
+		F51C00F61B8611CE001854E7 /* UIViewController+Navigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Navigation.m"; sourceTree = "<group>"; };
+		F51C00F91B8620D4001854E7 /* LEMSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEMSettings.h; sourceTree = "<group>"; };
+		F52024D21B87130C00AE9CBD /* LEMDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEMDetailViewController.h; sourceTree = "<group>"; };
+		F52024D31B87130C00AE9CBD /* LEMDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEMDetailViewController.m; sourceTree = "<group>"; };
+		F52024D41B87130C00AE9CBD /* LEMDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LEMDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,11 +115,14 @@
 		F51C00CD1B8602B6001854E7 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				F51C00F11B860E49001854E7 /* Controllers */,
 				F51C00D21B8602B6001854E7 /* AppDelegate.h */,
 				F51C00D31B8602B6001854E7 /* AppDelegate.m */,
+				F51C00F91B8620D4001854E7 /* LEMSettings.h */,
+				F51C00F81B8611D7001854E7 /* Categories */,
+				F51C00CE1B8602B6001854E7 /* Supporting Files */,
 				F51C00D51B8602B6001854E7 /* Images.xcassets */,
 				F51C00D71B8602B6001854E7 /* LaunchScreen.xib */,
-				F51C00CE1B8602B6001854E7 /* Supporting Files */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -133,6 +151,29 @@
 				F51C00E31B8602B7001854E7 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F51C00F11B860E49001854E7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F51C00EE1B860D21001854E7 /* LEMSearchTableViewController.h */,
+				F51C00EF1B860D21001854E7 /* LEMSearchTableViewController.m */,
+				F51C00F21B860F4A001854E7 /* LEMSuggestionsTableViewController.h */,
+				F51C00F31B860F4A001854E7 /* LEMSuggestionsTableViewController.m */,
+				F52024D21B87130C00AE9CBD /* LEMDetailViewController.h */,
+				F52024D31B87130C00AE9CBD /* LEMDetailViewController.m */,
+				F52024D41B87130C00AE9CBD /* LEMDetailViewController.xib */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		F51C00F81B8611D7001854E7 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				F51C00F51B8611CE001854E7 /* UIViewController+Navigation.h */,
+				F51C00F61B8611CE001854E7 /* UIViewController+Navigation.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F51C00D91B8602B6001854E7 /* LaunchScreen.xib in Resources */,
+				F52024D61B87130C00AE9CBD /* LEMDetailViewController.xib in Resources */,
 				F51C00D61B8602B6001854E7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,7 +311,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F51C00F01B860D21001854E7 /* LEMSearchTableViewController.m in Sources */,
+				F51C00F71B8611CE001854E7 /* UIViewController+Navigation.m in Sources */,
 				F51C00D41B8602B6001854E7 /* AppDelegate.m in Sources */,
+				F51C00F41B860F4A001854E7 /* LEMSuggestionsTableViewController.m in Sources */,
+				F52024D51B87130C00AE9CBD /* LEMDetailViewController.m in Sources */,
 				F51C00D11B8602B6001854E7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
