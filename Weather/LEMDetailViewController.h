@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+@import MapKit;
+@class LEMGeolocation;
 
 @interface LEMDetailViewController : UIViewController
+
+@property(nonatomic,strong) LEMGeolocation *model;
+
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UILabel *temperatureLabel;
+
+-(instancetype) initWithModel:(LEMGeolocation*) model;
 
 @end

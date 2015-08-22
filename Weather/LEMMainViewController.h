@@ -8,6 +8,6 @@
 
 #import "POLCoreDataTableViewController.h"
 
-@interface LEMGeonameViewController : POLCoreDataTableViewController
+@interface LEMMainViewController : POLCoreDataTableViewController
 
 @end

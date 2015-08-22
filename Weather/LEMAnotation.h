@@ -6,8 +6,17 @@
 //  Copyright (c) 2015 lemurinthebox. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
+@import MapKit;
 
-@interface LEMAnotation : NSObject
+@interface LEMAnotation : NSObject <MKAnnotation>
+
+@property(nonatomic,copy) NSString *title;
+@property(nonatomic,copy) NSString *subtitle;
+@property(nonatomic,readonly) CLLocationCoordinate2D coordinate;
+
+- (instancetype)initWithTitle:(NSString*) title
+                     subtitle:(NSString*) subtitle
+                   coordinate:(CLLocationCoordinate2D) coordinate;
 
 @end

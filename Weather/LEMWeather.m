@@ -6,8 +6,22 @@
 //  Copyright (c) 2015 lemurinthebox. All rights reserved.
 //
 
-#import "LEMTemperature.h"
+#import "LEMWeather.h"
 
-@implementation LEMTemperature
+@implementation LEMWeather
 
+-(instancetype) initWithTemperature:(double) temperature{
+    
+    if (self = [super init]) {
+        _temperature = temperature;
+    }
+    
+    return self;
+}
+
++(instancetype) weatherWithTemperature:(double) temperature{
+    
+    return [[LEMWeather alloc] initWithTemperature:temperature];
+    
+}
 @end

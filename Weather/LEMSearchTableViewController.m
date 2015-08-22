@@ -8,10 +8,9 @@
 
 #import "LEMSearchTableViewController.h"
 #import "LEMSuggestionsTableViewController.h"
+#import "LEMDetailViewController.h"
 
 @interface LEMSearchTableViewController () <SuggestionsViewControllerDelegate, UISearchBarDelegate>
-
-@property(nonatomic,strong) NSMutableArray *lastSearch;
 
 @property(nonatomic,strong) UISearchController *searchController;
 
@@ -29,12 +28,26 @@
                                                                                             action:@selector(showSuggestions)];
     self.navigationItem.rightBarButtonItem = suggestionButton;
     
-    self.lastSearch = [NSMutableArray new];
-    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark - Private
+
+-(void) showSuggestions{
+ 
+//    LEMSuggestionsTableViewController *suggestionsVC = [[LEMSuggestionsTableViewController alloc] initWithNavigation:self.navigationController];
+//    
+//    suggestionsVC.delegate = self;
+//    
+//    self.searchController = [[UISearchController alloc] initWithSearchResultsController:suggestionsVC];
+//    self.searchController.searchResultsUpdater = suggestionsVC;
+//    self.searchController.hidesNavigationBarDuringPresentation = NO;
+//    self.searchController.searchBar.delegate = self;
+//    
+//    [self presentViewController:self.searchController animated:YES completion:nil];
 }
 
 #pragma mark - Table view data source
@@ -44,23 +57,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.lastSearch count];
-}
-
-#pragma mark - Private
-
--(void) showSuggestions{
- 
-    LEMSuggestionsTableViewController *suggestionsVC = [LEMSuggestionsTableViewController new];
-    
-    suggestionsVC.delegate = self;
-    
-    self.searchController = [[UISearchController alloc] initWithSearchResultsController:suggestionsVC];
-    self.searchController.searchResultsUpdater = suggestionsVC;
-    self.searchController.hidesNavigationBarDuringPresentation = NO;
-    self.searchController.searchBar.delegate = self;
-    
-    [self presentViewController:self.searchController animated:YES completion:nil];
+    return 1; //[self.lastSearch count];
+  
 }
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -73,21 +71,53 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
     
-    cell.textLabel.text = [self.lastSearch objectAtIndexedSubscript:indexPath.row];
+  //  cell.textLabel.text = [self.lastSearch objectAtIndexedSubscript:indexPath.row];
     
     return cell;
     
 }
 
-#pragma mark - SuggestionsViewControllerDelegate
+#pragma mark - UITableViewDelegate
 
--(void) suggestionsViewController:(LEMSuggestionsTableViewController *)viewController didSelectSuggestion:(NSString *)suggestion{
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    [self.lastSearch addObject:suggestion];
-    [self.tableView reloadData];
     
-    [self.searchController dismissViewControllerAnimated:YES completion:nil];
+    
+//    LEMGeoName *current = [self.lastSearch objectAtIndex:indexPath.row];
+//    
+//    LEMDetailViewController *detailVC = [[LEMDetailViewController alloc] initWithModel:current];
+//    
+//    [self.navigationController pushViewController:detailVC animated:NO];
+
     
 }
+
+#pragma mark - SuggestionsViewControllerDelegate
+
+-(void) suggestionsViewController:(LEMSuggestionsTableViewController *)viewController didSelectSuggestion:(LEMGeolocation *)suggestion{
+
+  //  [self.tableView reloadData];
+    
+  //  [self.searchController dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end

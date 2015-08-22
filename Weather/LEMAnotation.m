@@ -10,4 +10,19 @@
 
 @implementation LEMAnotation
 
+- (instancetype)initWithTitle:(NSString*) title
+                     subtitle:(NSString*) subtitle
+                   coordinate:(CLLocationCoordinate2D) coordinate{
+    
+    if (self = [super init]) {
+        
+        _title = title;
+        _subtitle = subtitle;
+        _coordinate = coordinate;
+    }
+    
+    return self;
+    
+}
+
 @end

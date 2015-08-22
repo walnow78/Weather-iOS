@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LEMTemperature : NSObject
+@interface LEMWeather : NSObject
+
+@property(nonatomic) double temperature;
+
+-(instancetype) initWithTemperature:(double) temperature;
+
++(instancetype) weatherWithTemperature:(double) temperature;
 
 @end

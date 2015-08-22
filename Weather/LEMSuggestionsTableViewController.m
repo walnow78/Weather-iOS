@@ -7,21 +7,62 @@
 //
 
 #import "LEMSuggestionsTableViewController.h"
-#import <AFNetworking/AFHTTPRequestOperation.h>
-#import <AFNetworking/AFNetworking.h>
 #import "LEMSettings.h"
+#import "LEMSuggestion.h"
+#import "LEMSuggestionModel.h"
+#import "LEMDetailViewController.h"
+
+#import "LEMGeolocation.h"
 
 @interface LEMSuggestionsTableViewController ()
 
-@property(nonatomic,strong) NSMutableArray *suggestions;
-@property(nonatomic,strong) NSMutableArray *suggestions2;
+@property(nonatomic,strong) LEMSuggestionModel *model;
 
 @end
 
 @implementation LEMSuggestionsTableViewController
 
+-(instancetype) initWithNavigation:(UINavigationController*) navigation
+                           context:(NSManagedObjectContext*) context;{
+    
+    if (self = [super initWithNibName:nil bundle:nil]) {
+        _navigation = navigation;
+        _context = context;
+        
+    }
+    
+    return self;
+}
+
+#pragma mark - lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.model = [LEMSuggestionModel new];
+    
+}
+
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    
+    [center addObserver:self
+               selector:@selector(syncViewModel)
+                   name:MODEL_GEONAME_DID_CHANGE
+                 object:nil];
+    
+}
+
+- (void) viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) syncViewModel{
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,7 +77,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.suggestions count];
+    return [self.model count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -49,68 +90,44 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellId];
     }
     
-    cell.textLabel.text = [self.suggestions objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text = [self.suggestions2 objectAtIndex:indexPath.row];
+    LEMSuggestion *current = [self.model objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = current.name;
+    cell.detailTextLabel.text = current.name;
+    
     return cell;
 }
 
+#pragma mark - UITableDataView
+
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSString *currentSuggestion = [self.suggestions objectAtIndex:indexPath.row];
+    LEMSuggestion *current = [self.model objectAtIndex:indexPath.row];
     
-    [self.delegate suggestionsViewController:self didSelectSuggestion:currentSuggestion];
+    [self.delegate suggestionsViewController:self didSelectSuggestion:current];
     
+    LEMGeolocation *loc = [LEMGeolocation geolocationWithName:current.name
+                                                     latitude:current.latitude
+                                                    longitude:current.longitude
+                                                        south:current.south
+                                                        north:current.north
+                                                         east:current.east
+                                                         west:current.west
+                                                      context:self.context];
+    
+    
+    LEMDetailViewController *detailVC = [[LEMDetailViewController alloc] initWithModel:loc];
+    
+    [self.navigation pushViewController:detailVC animated:NO];
 
-    
-
-    
 }
 
 #pragma mark - UISearchResultsUpdating
 
 -(void) updateSearchResultsForSearchController:(UISearchController *)searchController{
-        
-        self.suggestions = [NSMutableArray new];
-        self.suggestions2 = [NSMutableArray new];
-        
-        NSDictionary *parameters = @{@"q" : searchController.searchBar.text,
-                                     @"maxRows" : @"20",
-                                     @"startRow" : @"0",
-                                     @"lang" : @"en",
-                                     @"isNameRequired" : @"true",
-                                     @"style" : @"FULL",
-                                     @"username" : API_USER};
-        
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        
-        [manager GET:API_URL
-          parameters:parameters
-             success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                 
-                 NSDictionary *geonames = [responseObject objectForKey:@"geonames"];
-                 
-                 for (NSDictionary *dic in geonames) {
-                     
-                     NSString *countryName = [dic objectForKey:@"countryName"];
-                     NSString *asciiName = [dic objectForKey:@"asciiName"];
-                     NSString *fcodename = [dic objectForKey:@"fcodeName"];
-                     
-                     NSString *desc = [NSString stringWithFormat:@"%@ - %@", countryName, asciiName];
-                     
-                     [self.suggestions addObject:desc];
-                     [self.suggestions2 addObject:fcodename];
-                     [self.tableView reloadData];
-                     
-                     
-                 }
-                 
-             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                 
-                 
-                 
-             }];
     
     
+    [self.model syncModelWithText:searchController.searchBar.text];
 }
 
 @end

@@ -7,7 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+@class LEMSuggestion;
 
 @interface LEMSuggestionModel : NSObject
+
+@property(nonatomic,strong) NSMutableArray *model;
+
+-(instancetype) init;
+
+-(void) syncModelWithText:(NSString*) text;
+
+-(LEMSuggestion*) objectAtIndex:(NSUInteger) index;
+
+-(NSInteger) count;
+
 
 @end

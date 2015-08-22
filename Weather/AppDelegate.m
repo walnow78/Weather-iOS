@@ -11,8 +11,14 @@
 
 #import "LEMSearchTableViewController.h"
 #import "UIViewController+Navigation.h"
+#import "POLCoreDataStack.h"
+#import "LEMMainViewController.h"
+#import "LEMGeolocation.h"
+
 
 @interface AppDelegate ()
+
+@property(nonatomic,strong) POLCoreDataStack *stack;
 
 @end
 
@@ -25,11 +31,33 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    LEMSearchTableViewController *searchVC = [LEMSearchTableViewController new];
+    self.stack = [POLCoreDataStack coreDataStackWithModelName:@"Model"];
     
-
+//    LEMSearchTableViewController *searchVC = [LEMSearchTableViewController new];
+//    
+//    self.window.rootViewController = [searchVC wrappedInNavigation];
     
-    self.window.rootViewController = [searchVC wrappedInNavigation];
+    // Retrive data
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[LEMGeolocation entityName]];
+    
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:LEMGeolocationAttributes.name
+                                                              ascending:YES
+                                                               selector:@selector(caseInsensitiveCompare:)]];
+    
+    NSFetchedResultsController *fetch = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                            managedObjectContext:self.stack.context
+                                                                              sectionNameKeyPath:nil
+                                                                                       cacheName:nil];
+    
+    LEMMainViewController *mainVC = [[LEMMainViewController alloc] initWithFetchedResultsController:fetch
+                                                                                                       style:UITableViewStylePlain];
+    
+    self.window.rootViewController = [mainVC wrappedInNavigation];
+    
+    
+    
+    
     
     return YES;
 }

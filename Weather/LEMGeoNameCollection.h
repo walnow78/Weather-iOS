@@ -7,7 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+@class LEMGeoName;
 
 @interface LEMGeoNameCollection : NSObject
+
+@property(nonatomic,strong) NSMutableArray *model;
+
+-(instancetype) init;
+
+-(void) syncModelWithText:(NSString*) text;
+
+-(LEMGeoName*) objectAtIndex:(NSUInteger) index;
+
+-(NSInteger) count;
+
 
 @end
