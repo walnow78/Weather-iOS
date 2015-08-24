@@ -15,6 +15,7 @@
 @interface LEMDetailViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
 
 @property(nonatomic) double temperature;
+@property(nonatomic,strong) LEMAnotation *point;
 
 @end
 
@@ -65,6 +66,9 @@
 
 - (void) syncViewModel{
 
+    
+    [LEMNetworking syncTemperatureWithGeolocation:self.model];
+    
     CLLocationCoordinate2D loc2D;
     
     loc2D.latitude = self.model.latitudeValue;
@@ -74,13 +78,12 @@
     
     [self.mapView setRegion:region animated:YES];
     
-    LEMAnotation *point = [[LEMAnotation alloc] initWithTitle:self.model.name
+    self.point = [[LEMAnotation alloc] initWithTitle:self.model.name
                                                      subtitle:nil
                                                    coordinate:loc2D];
     
-    [self.mapView addAnnotation:point];
+    [self.mapView addAnnotation:self.point];
     
-    [LEMNetworking syncTemperatureWithGeolocation:self.model];
 }
 
 -(void) customSlide{
@@ -107,6 +110,8 @@
     [self.sliderView setValue:-10];
     
     self.temperature = [[dic objectForKey:KEY_TEMPERATURE_NOTIFICATION] doubleValue];
+    
+    self.point.subtitle = [NSString stringWithFormat:@"Temp: %.02fC", self.temperature];
     
     [UIView animateWithDuration:1
                      animations:^{
