@@ -6,11 +6,15 @@
 //  Copyright (c) 2015 lemurinthebox. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 @import MapKit;
+
+
+#import "LEMMainViewController.h"
+
 @class LEMGeolocation;
 
-@interface LEMDetailViewController : UIViewController
+@interface LEMDetailViewController : UIViewController <UISplitViewControllerDelegate, MainViewControllerDelegate>
 
 @property(nonatomic,strong) LEMGeolocation *model;
 

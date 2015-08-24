@@ -11,6 +11,7 @@
 #import "LEMGeolocation.h"
 #import "LEMAnotation.h"
 #import "LEMNetworking.h"
+#import "LEMMainViewController.h"
 
 @interface LEMDetailViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
 
@@ -25,7 +26,6 @@
     
     if (self = [super init]) {
         _model = model;
-        self.title = model.name;
     }
     
     return self;
@@ -66,6 +66,7 @@
 
 - (void) syncViewModel{
 
+    self.title = self.model.name;
     
     [LEMNetworking syncTemperatureWithGeolocation:self.model];
     
@@ -152,13 +153,33 @@
     }
     
     return annotationView;
+}
+
+#pragma  mark - MainViewControllerDelegate
+
+-(void) mainViewController:(LEMMainViewController *)mainVC geolocationDidChange:(LEMGeolocation *)geolocation{
+    self.model = geolocation;
+    [self syncViewModel];
     
 }
 
+#pragma mark - UISplitViewControllerDelegate
+
+-(void) splitViewController:(UISplitViewController *)svc
+    willChangeToDisplayMode:(UISplitViewControllerDisplayMode)displayMode{
+    
+    if (displayMode == UISplitViewControllerDisplayModePrimaryHidden) {
+        self.navigationItem.leftBarButtonItem = svc.displayModeButtonItem;
+    }else{
+        self.navigationItem.leftBarButtonItem = nil;
+    }
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 @end

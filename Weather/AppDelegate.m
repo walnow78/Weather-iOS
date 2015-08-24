@@ -14,6 +14,9 @@
 #import "LEMMainViewController.h"
 #import "LEMGeolocation.h"
 #import "LEMSettings.h"
+#import "LEMDetailViewController.h"
+
+#import "LEMSuggestionsTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -45,15 +48,28 @@
                                                                               sectionNameKeyPath:nil
                                                                                        cacheName:nil];
     
-    LEMMainViewController *mainVC = [[LEMMainViewController alloc] initWithFetchedResultsController:fetch
-                                                                                                       style:UITableViewStylePlain];
+    LEMGeolocation *geolocation = [[self.stack executeFetchRequest:request
+                                                       errorBlock:^(NSError *error) {
+                                                           NSLog(@"Error retrieve geolocation");
+                                                           
+                                                       }] lastObject];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        
+        [self configurationForPadWithFetch:fetch geolocation:geolocation];
+        
+    }else{
+        
+        [self conigurationforPhoneWithFetch:fetch];
+        
+    }
     
     [self autoSave];
     
-    self.window.rootViewController = [mainVC wrappedInNavigation];
-    
     return YES;
 }
+
+#pragma mark - Private
 
 -(void)save{
     
@@ -68,6 +84,36 @@
     [self performSelector:@selector(autoSave)
                withObject:nil
                afterDelay:AUTO_SAVE_DELAY];
+}
+
+-(void) configurationForPadWithFetch:(NSFetchedResultsController*) fetch geolocation:(LEMGeolocation*) geolocation{
+    
+    LEMMainViewController *mainVC = [[LEMMainViewController alloc] initWithFetchedResultsController:fetch
+                                                                                              style:UITableViewStylePlain];
+    
+    LEMDetailViewController *detailVC = [[LEMDetailViewController alloc] initWithModel:geolocation];
+  
+    UISplitViewController *splitVC = [[UISplitViewController alloc] init];
+    
+    mainVC.delegate = detailVC;
+    splitVC.delegate = detailVC;
+    
+    splitVC.viewControllers = @[[mainVC wrappedInNavigation], [detailVC wrappedInNavigation]];
+    
+    self.window.rootViewController = splitVC;
+
+}
+
+-(void) conigurationforPhoneWithFetch:(NSFetchedResultsController*) fetch{
+    
+    LEMMainViewController *mainVC = [[LEMMainViewController alloc] initWithFetchedResultsController:fetch
+                                                                                              style:UITableViewStylePlain];
+    
+    mainVC.delegate = mainVC;
+    
+    self.window.rootViewController = [mainVC wrappedInNavigation];
+
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

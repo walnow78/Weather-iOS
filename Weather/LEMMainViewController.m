@@ -14,6 +14,7 @@
 @interface LEMMainViewController () <SuggestionsViewControllerDelegate, UISearchBarDelegate>
 
 @property(nonatomic,strong) UISearchController *searchController;
+@property(nonatomic,strong) LEMSuggestionsTableViewController *suggestion;
 
 @end
 
@@ -34,8 +35,7 @@
 
 -(void) showSuggestions{
     
-    LEMSuggestionsTableViewController *suggestionsVC = [[LEMSuggestionsTableViewController alloc] initWithNavigation:self.navigationController
-                                                                                                             context:self.fetchedResultsController.managedObjectContext];
+    LEMSuggestionsTableViewController *suggestionsVC = [[LEMSuggestionsTableViewController alloc] initWithcontext:self.fetchedResultsController.managedObjectContext];
     
     suggestionsVC.delegate = self;
     
@@ -61,7 +61,7 @@
     LEMGeolocation *current = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     cell.textLabel.text = current.name;
-    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
     
 }
@@ -71,9 +71,10 @@
     
     LEMGeolocation *current = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    LEMDetailViewController *detailVC = [[LEMDetailViewController alloc] initWithModel:current];
+    // Notify to delegate
     
-    [self.navigationController pushViewController:detailVC animated:NO];
+    [self.delegate mainViewController:self
+                 geolocationDidChange:current];
     
 }
 
@@ -82,16 +83,34 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-
 #pragma mark - SuggestionsViewControllerDelegate
 
--(void) suggestionsViewController:(LEMSuggestionsTableViewController *)viewController didSelectSuggestion:(LEMSuggestion *)suggestion{
+-(void) suggestionsViewController:(LEMSuggestionsTableViewController *)viewController didSelectSuggestion:(LEMGeolocation *)suggestion{
     
     [self.tableView reloadData];
     
     [self.searchController dismissViewControllerAnimated:YES completion:nil];
     
+    LEMDetailViewController *detailVC = [[LEMDetailViewController alloc] initWithModel:suggestion];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad){
+        [self.delegate mainViewController:self
+                     geolocationDidChange:suggestion];
+    }else{
+        [self.navigationController pushViewController:detailVC animated:NO];
+    }
 }
+
+#pragma mark - MainViewControllerDelegate
+
+-(void) mainViewController:(LEMMainViewController *)mainVC geolocationDidChange:(LEMGeolocation *)geolocation{
+
+    LEMDetailViewController *detailVC = [[LEMDetailViewController alloc] initWithModel:geolocation];
+
+    [self.navigationController pushViewController:detailVC animated:NO];
+    
+}
+
+
 
 @end

@@ -7,7 +7,18 @@
 //
 
 #import "POLCoreDataTableViewController.h"
+@class LEMMainViewController;
+@class LEMGeolocation;
 
-@interface LEMMainViewController : POLCoreDataTableViewController
+@protocol MainViewControllerDelegate <NSObject>
+
+-(void) mainViewController:(LEMMainViewController*) mainVC
+      geolocationDidChange:(LEMGeolocation*) geolocation;
+
+@end
+
+@interface LEMMainViewController : POLCoreDataTableViewController <MainViewControllerDelegate>
+
+@property(nonatomic,strong) id<MainViewControllerDelegate> delegate;
 
 @end

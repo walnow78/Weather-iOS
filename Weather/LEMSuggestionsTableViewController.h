@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 @class LEMSuggestionsTableViewController;
-@class LEMSuggestion;
+@class LEMGeolocation;
+
 
 @protocol SuggestionsViewControllerDelegate <NSObject>
 
 -(void) suggestionsViewController:(LEMSuggestionsTableViewController*) viewController
-              didSelectSuggestion:(LEMSuggestion*) suggestion;
+              didSelectSuggestion:(LEMGeolocation*) suggestion;
 
 @end
 
@@ -24,7 +25,6 @@
 @property(nonatomic,strong) UINavigationController *navigation;
 @property(nonatomic,strong) NSManagedObjectContext *context;
 
--(instancetype) initWithNavigation:(UINavigationController*) navigation
-                           context:(NSManagedObjectContext*) context;
+-(instancetype) initWithcontext:(NSManagedObjectContext*) context;
 
 @end

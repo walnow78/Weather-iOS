@@ -11,10 +11,11 @@
 #import "LEMSuggestion.h"
 #import "LEMSuggestionModel.h"
 #import "LEMDetailViewController.h"
+#import "LEMMainViewController.h"
 
 #import "LEMGeolocation.h"
 
-@interface LEMSuggestionsTableViewController ()
+@interface LEMSuggestionsTableViewController () 
 
 @property(nonatomic,strong) LEMSuggestionModel *model;
 
@@ -22,11 +23,9 @@
 
 @implementation LEMSuggestionsTableViewController
 
--(instancetype) initWithNavigation:(UINavigationController*) navigation
-                           context:(NSManagedObjectContext*) context;{
+-(instancetype) initWithcontext:(NSManagedObjectContext*) context;{
     
     if (self = [super initWithNibName:nil bundle:nil]) {
-        _navigation = navigation;
         _context = context;
         
     }
@@ -104,8 +103,6 @@
     
     LEMSuggestion *current = [self.model objectAtIndex:indexPath.row];
     
-    [self.delegate suggestionsViewController:self didSelectSuggestion:current];
-    
     LEMGeolocation *loc = [LEMGeolocation geolocationWithName:current.name
                                                           latitude:current.latitude
                                                          longitude:current.longitude
@@ -115,18 +112,14 @@
                                                               west:current.west
                                                            context:self.context];
     
+    [self.delegate suggestionsViewController:self didSelectSuggestion:loc];
     
-    LEMDetailViewController *detailVC = [[LEMDetailViewController alloc] initWithModel:loc];
-    
-    [self.navigation pushViewController:detailVC animated:NO];
-
 }
 
 #pragma mark - UISearchResultsUpdating
 
 -(void) updateSearchResultsForSearchController:(UISearchController *)searchController{
-    
-    
+
     [self.model syncModelWithText:searchController.searchBar.text];
 }
 

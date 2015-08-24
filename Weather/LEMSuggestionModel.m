@@ -16,7 +16,9 @@
 
 -(instancetype) init{
     
-    self.model = [[NSMutableArray alloc] init];
+    if (self = [super init]) {
+        self.model = [[NSMutableArray alloc] init];
+    }
     
     return self;
     
