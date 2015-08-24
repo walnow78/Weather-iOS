@@ -8,13 +8,13 @@
 
 #import "LEMDetailViewController.h"
 #import "LEMSettings.h"
-#import "LEMWeatherCollection.h"
 #import "LEMGeolocation.h"
 #import "LEMAnotation.h"
+#import "LEMNetworking.h"
 
 @interface LEMDetailViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
 
-@property(nonatomic,strong) LEMWeatherCollection *weather;
+@property(nonatomic) double temperature;
 
 @end
 
@@ -24,40 +24,45 @@
     
     if (self = [super init]) {
         _model = model;
+        self.title = model.name;
     }
     
     return self;
     
 }
 
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
-    self.mapView.delegate = self;
-}
+#pragma mark - Lifecycle
 
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     
-//    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-//    
-//    [center addObserver:self
-//               selector:@selector(syncViewModel)
-//                   name:MODEL_TEMPERATURE_DID_CHANGE
-//                 object:nil];
-//   
-//    self.weather = [LEMWeatherCollection weatherWithNorth:self.model.north
-//                                                    south:self.model.south
-//                                                     east:self.model.east
-//                                                     west:self.model.west];
-//
-//    [self.weather syncModel];
+    [self customSlide];
+    
+    self.mapView.delegate = self;
+    
+    [self.temperatureLabel setHidden:YES];
+    
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    
+    [center addObserver:self
+               selector:@selector(syncTemperature:)
+                   name:TEMPERATURE_DID_CHANGE
+                 object:nil];
   
     [self syncViewModel];
+    
+
+    
 }
-//
+
+- (void) viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Private
+
 - (void) syncViewModel{
 
     CLLocationCoordinate2D loc2D;
@@ -70,30 +75,62 @@
     [self.mapView setRegion:region animated:YES];
     
     LEMAnotation *point = [[LEMAnotation alloc] initWithTitle:self.model.name
-                                                     subtitle:self.model.name
+                                                     subtitle:nil
                                                    coordinate:loc2D];
     
-    
     [self.mapView addAnnotation:point];
-
     
-//    for (LEMWeather *each in self.weather.model) {
-//        
-//        NSLog(@"temperature: %f", each.temperature);
-//        self.temperatureLabel.text = [NSString stringWithFormat:@"Temperature: %f", each.temperature];
-//    }
-    
+    [LEMNetworking syncTemperatureWithGeolocation:self.model];
 }
 
-- (void) viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
+-(void) customSlide{
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+    [[UISlider appearance] setThumbImage:[UIImage imageNamed:@"RectangleMark.png"]
+                                forState:UIControlStateNormal];
+    
+    [self.sliderView setMinimumTrackImage:[UIImage imageNamed:@"rectangleBlue.png"]
+                                 forState:UIControlStateNormal];
+    
+    [self.sliderView setMaximumTrackImage:[UIImage imageNamed:@"rectangleRed.png"]
+                                 forState:UIControlStateNormal];
+
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void) syncTemperature:(NSNotification*) info{
+    
+    NSDictionary *dic = [info userInfo];
+    
+    [self.sliderView setMinimumValue:-50];
+    [self.sliderView setMaximumValue:50];
+    
+    [self.sliderView setValue:-10];
+    
+    self.temperature = [[dic objectForKey:KEY_TEMPERATURE_NOTIFICATION] doubleValue];
+    
+    [UIView animateWithDuration:1
+                     animations:^{
+                         
+                         [self.sliderView setValue:self.temperature
+                                          animated:YES];
+                         
+                         
+                     } completion:^(BOOL finished) {
+                         
+                         self.temperatureLabel.text = [NSString stringWithFormat:@"Temp: %.02fC", self.temperature];
+                         [self.temperatureLabel setHidden:NO];
+                         
+                     }];
+    
+    [UIView animateWithDuration:1
+                     animations:^{
+                         self.temperatureLabel.alpha = 1;
+                         
+                     } completion:^(BOOL finished) {
+                         
+
+                         
+                     }];
 }
 
 #pragma mark - MKMapViewDelegate
@@ -106,16 +143,17 @@
     
     if (annotationView == nil) {
         annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseId];
-        
-        annotationView.pinColor = MKPinAnnotationColorPurple;
-        
         annotationView.canShowCallout = YES;
-        
     }
     
     return annotationView;
     
 }
 
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 @end

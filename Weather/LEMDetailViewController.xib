@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LEMDetailViewController">
             <connections>
                 <outlet property="mapView" destination="kH7-Cr-6Jh" id="8uH-ib-Id9"/>
+                <outlet property="sliderView" destination="4fF-fs-y1C" id="HA6-zh-bY0"/>
                 <outlet property="temperatureLabel" destination="ozm-Vq-H4S" id="ZQU-56-tjb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -18,24 +19,31 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kH7-Cr-6Jh">
-                    <rect key="frame" x="24" y="158" width="552" height="419"/>
+                    <rect key="frame" x="2" y="131" width="596" height="469"/>
                 </mapView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozm-Vq-H4S">
-                    <rect key="frame" x="24" y="102" width="552" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                <slider opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="-50" minValue="-50" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="4fF-fs-y1C">
+                    <rect key="frame" x="22" y="88" width="556" height="31"/>
+                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </slider>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozm-Vq-H4S">
+                    <rect key="frame" x="24" y="92" width="552" height="19"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottomMargin" secondItem="kH7-Cr-6Jh" secondAttribute="bottom" constant="16" id="1Ir-Fa-Q5k"/>
-                <constraint firstAttribute="trailingMargin" secondItem="kH7-Cr-6Jh" secondAttribute="trailing" constant="16" id="9aN-Ck-fHj"/>
-                <constraint firstItem="ozm-Vq-H4S" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="topMargin" constant="94" id="KO7-Yd-dCy"/>
+                <constraint firstItem="4fF-fs-y1C" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="topMargin" constant="80" id="59M-6L-oaB"/>
+                <constraint firstItem="4fF-fs-y1C" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="24" id="5J9-q3-MDX"/>
+                <constraint firstAttribute="trailing" secondItem="kH7-Cr-6Jh" secondAttribute="trailing" constant="2" id="Dt9-fs-djx"/>
+                <constraint firstAttribute="bottom" secondItem="kH7-Cr-6Jh" secondAttribute="bottom" id="GCv-Ar-wC5"/>
+                <constraint firstItem="ozm-Vq-H4S" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="topMargin" constant="84" id="KO7-Yd-dCy"/>
                 <constraint firstItem="ozm-Vq-H4S" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" constant="16" id="MjX-3K-u4p"/>
-                <constraint firstItem="kH7-Cr-6Jh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" constant="16" id="Z4X-tK-ibR"/>
-                <constraint firstItem="kH7-Cr-6Jh" firstAttribute="top" secondItem="ozm-Vq-H4S" secondAttribute="bottom" constant="35" id="j9h-7V-VXC"/>
+                <constraint firstAttribute="trailingMargin" secondItem="4fF-fs-y1C" secondAttribute="trailing" constant="16" id="nvm-Up-V7Y"/>
+                <constraint firstItem="kH7-Cr-6Jh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="2" id="pFA-xb-kuE"/>
                 <constraint firstAttribute="trailingMargin" secondItem="ozm-Vq-H4S" secondAttribute="trailing" constant="16" id="rlm-vu-3No"/>
+                <constraint firstItem="kH7-Cr-6Jh" firstAttribute="top" secondItem="ozm-Vq-H4S" secondAttribute="bottom" constant="20" id="yKq-IX-gKn"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
         </view>

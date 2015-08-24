@@ -23,9 +23,7 @@
 }
 
 -(LEMSuggestion*) objectAtIndex:(NSUInteger) index{
-    
     return [self.model objectAtIndex:index];
-    
 }
 
 - (NSInteger)count{
@@ -57,17 +55,16 @@
                  NSString *countryName = [dic objectForKey:@"countryName"];
                  NSString *asciiName = [dic objectForKey:@"asciiName"];
                  
-                 NSString *desc = [NSString stringWithFormat:@"%@ - %@", countryName, asciiName];
-                 
                  NSDictionary *bbox = [dic objectForKey:@"bbox"];
                  
-                 LEMSuggestion *suggestion = [LEMSuggestion suggestionWithSouth:[[bbox objectForKey:@"south"] doubleValue]
-                                                           east:[[bbox objectForKey:@"east"] doubleValue]
-                                                          north:[[bbox objectForKey:@"north"] doubleValue]
-                                                           west:[[bbox objectForKey:@"west"] doubleValue]
-                                                           name:desc
-                                                       latitude:[[dic objectForKey:@"lat"] doubleValue]
-                                                      longitude:[[dic objectForKey:@"lng"] doubleValue]];
+                 LEMSuggestion *suggestion = [LEMSuggestion suggestionWithCountryId:[[dic objectForKey:@"countryId"] intValue]
+                                                                              South:[[bbox objectForKey:@"south"] doubleValue]
+                                                                               east:[[bbox objectForKey:@"east"] doubleValue]
+                                                                              north:[[bbox objectForKey:@"north"] doubleValue]
+                                                                               west:[[bbox objectForKey:@"west"] doubleValue]
+                                                                               name:[NSString stringWithFormat:@"%@ - %@", countryName, asciiName]
+                                                                           latitude:[[dic objectForKey:@"lat"] doubleValue]
+                                                                          longitude:[[dic objectForKey:@"lng"] doubleValue]];
                  
                  [self.model addObject:suggestion];
                  

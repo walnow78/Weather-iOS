@@ -10,15 +10,17 @@
 
 @implementation LEMSuggestion
 
--(instancetype) initWithSouth:(double) south
-                         east:(double) east
-                        north:(double) north
-                         west:(double) west
-                         name:(NSString*) name
-                     latitude:(double) latitude
-                    longitude:(double) longitude{
+-(instancetype) initWithCountryId:(int) countryId
+                            South:(double) south
+                             east:(double) east
+                            north:(double) north
+                             west:(double) west
+                             name:(NSString*) name
+                         latitude:(double) latitude
+                        longitude:(double) longitude{
     
     if (self = [super init]) {
+        _countryId = countryId;
         _south = south;
         _east = east;
         _north = north;
@@ -31,21 +33,23 @@
     return self;
 }
 
-+(instancetype) suggestionWithSouth:(double) south
-                               east:(double) east
-                              north:(double) north
-                               west:(double) west
-                               name:(NSString*) name
-                           latitude:(double) latitude
-                          longitude:(double) longitude{
++(instancetype) suggestionWithCountryId:(int) countryId
+                                  South:(double) south
+                                   east:(double) east
+                                  north:(double) north
+                                   west:(double) west
+                                   name:(NSString*) name
+                               latitude:(double) latitude
+                              longitude:(double) longitude{
     
-    return [[LEMSuggestion alloc] initWithSouth:south
-                                           east:east
-                                          north:north
-                                           west:west
-                                           name:name
-                                       latitude:latitude
-                                      longitude:longitude];
+    return [[LEMSuggestion alloc] initWithCountryId:countryId
+                                              South:south
+                                               east:east
+                                              north:north
+                                               west:west
+                                               name:name
+                                           latitude:latitude
+                                          longitude:longitude];
     
 }
 

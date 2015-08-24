@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UILabel *temperatureLabel;
+@property (weak, nonatomic) IBOutlet UISlider *sliderView;
 
 -(instancetype) initWithModel:(LEMGeolocation*) model;
 

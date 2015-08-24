@@ -107,13 +107,13 @@
     [self.delegate suggestionsViewController:self didSelectSuggestion:current];
     
     LEMGeolocation *loc = [LEMGeolocation geolocationWithName:current.name
-                                                     latitude:current.latitude
-                                                    longitude:current.longitude
-                                                        south:current.south
-                                                        north:current.north
-                                                         east:current.east
-                                                         west:current.west
-                                                      context:self.context];
+                                                          latitude:current.latitude
+                                                         longitude:current.longitude
+                                                             south:current.south
+                                                             north:current.north
+                                                              east:current.east
+                                                              west:current.west
+                                                           context:self.context];
     
     
     LEMDetailViewController *detailVC = [[LEMDetailViewController alloc] initWithModel:loc];

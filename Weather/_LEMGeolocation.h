@@ -13,12 +13,6 @@ extern const struct LEMGeolocationAttributes {
 	__unsafe_unretained NSString *west;
 } LEMGeolocationAttributes;
 
-extern const struct LEMGeolocationRelationships {
-	__unsafe_unretained NSString *temperature;
-} LEMGeolocationRelationships;
-
-@class LEMTemperature;
-
 @interface LEMGeolocationID : NSManagedObjectID {}
 @end
 
@@ -80,18 +74,6 @@ extern const struct LEMGeolocationRelationships {
 
 //- (BOOL)validateWest:(id*)value_ error:(NSError**)error_;
 
-@property (nonatomic, strong) NSSet *temperature;
-
-- (NSMutableSet*)temperatureSet;
-
-@end
-
-@interface _LEMGeolocation (TemperatureCoreDataGeneratedAccessors)
-- (void)addTemperature:(NSSet*)value_;
-- (void)removeTemperature:(NSSet*)value_;
-- (void)addTemperatureObject:(LEMTemperature*)value_;
-- (void)removeTemperatureObject:(LEMTemperature*)value_;
-
 @end
 
 @interface _LEMGeolocation (CoreDataGeneratedPrimitiveAccessors)
@@ -134,8 +116,5 @@ extern const struct LEMGeolocationRelationships {
 
 - (double)primitiveWestValue;
 - (void)setPrimitiveWestValue:(double)value_;
-
-- (NSMutableSet*)primitiveTemperature;
-- (void)setPrimitiveTemperature:(NSMutableSet*)value;
 
 @end

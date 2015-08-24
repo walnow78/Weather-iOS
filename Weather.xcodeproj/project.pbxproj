@@ -8,16 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		E5B4D93BB3E2126B5F9B6AFD /* libPods-Weather.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85388027FA6C3B50B76A5E09 /* libPods-Weather.a */; };
+		F507B7441B88775D003E7BF6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F507B7421B88775D003E7BF6 /* Model.xcdatamodeld */; };
+		F507B7491B8879C7003E7BF6 /* _LEMGeolocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F507B7461B8879C7003E7BF6 /* _LEMGeolocation.m */; };
+		F507B74D1B8879DF003E7BF6 /* LEMGeolocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F507B74C1B8879DF003E7BF6 /* LEMGeolocation.m */; };
+		F507B7541B887C96003E7BF6 /* POLCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = F507B7531B887C96003E7BF6 /* POLCoreDataStack.m */; };
+		F507B7571B887D3B003E7BF6 /* POLCoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F507B7561B887D3B003E7BF6 /* POLCoreDataTableViewController.m */; };
+		F507B75A1B887D8E003E7BF6 /* LEMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F507B7591B887D8E003E7BF6 /* LEMMainViewController.m */; };
+		F507B75D1B88893D003E7BF6 /* LEMSuggestion.m in Sources */ = {isa = PBXBuildFile; fileRef = F507B75C1B88893D003E7BF6 /* LEMSuggestion.m */; };
+		F507B7601B88FB37003E7BF6 /* LEMSuggestionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F507B75F1B88FB37003E7BF6 /* LEMSuggestionModel.m */; };
+		F507B7641B890422003E7BF6 /* LEMNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = F507B7631B890422003E7BF6 /* LEMNetworking.m */; };
 		F51C00D11B8602B6001854E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F51C00D01B8602B6001854E7 /* main.m */; };
 		F51C00D41B8602B6001854E7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F51C00D31B8602B6001854E7 /* AppDelegate.m */; };
 		F51C00D61B8602B6001854E7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F51C00D51B8602B6001854E7 /* Images.xcassets */; };
 		F51C00D91B8602B6001854E7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F51C00D71B8602B6001854E7 /* LaunchScreen.xib */; };
 		F51C00E51B8602B7001854E7 /* WeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F51C00E41B8602B7001854E7 /* WeatherTests.m */; };
-		F51C00F01B860D21001854E7 /* LEMSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F51C00EF1B860D21001854E7 /* LEMSearchTableViewController.m */; };
 		F51C00F41B860F4A001854E7 /* LEMSuggestionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F51C00F31B860F4A001854E7 /* LEMSuggestionsTableViewController.m */; };
 		F51C00F71B8611CE001854E7 /* UIViewController+Navigation.m in Sources */ = {isa = PBXBuildFile; fileRef = F51C00F61B8611CE001854E7 /* UIViewController+Navigation.m */; };
 		F52024D51B87130C00AE9CBD /* LEMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52024D31B87130C00AE9CBD /* LEMDetailViewController.m */; };
 		F52024D61B87130C00AE9CBD /* LEMDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52024D41B87130C00AE9CBD /* LEMDetailViewController.xib */; };
+		F5A9F46F1B8B032300342AA7 /* RectangleMark.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A9F46C1B8B032300342AA7 /* RectangleMark.png */; };
+		F5A9F4701B8B032300342AA7 /* rectangleRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A9F46D1B8B032300342AA7 /* rectangleRed@2x.png */; };
+		F5A9F4711B8B032300342AA7 /* rectangleRed.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A9F46E1B8B032300342AA7 /* rectangleRed.png */; };
+		F5A9F4731B8B033000342AA7 /* RectangleMark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A9F4721B8B033000342AA7 /* RectangleMark@2x.png */; };
+		F5A9F4761B8B034900342AA7 /* rectangleBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A9F4741B8B034900342AA7 /* rectangleBlue@2x.png */; };
+		F5A9F4771B8B034900342AA7 /* rectangleBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A9F4751B8B034900342AA7 /* rectangleBlue.png */; };
+		F5B4BAD41B877A760038FDD2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B4BAD31B877A760038FDD2 /* MapKit.framework */; };
+		F5B4BAD71B877D520038FDD2 /* LEMAnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B4BAD61B877D520038FDD2 /* LEMAnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +50,23 @@
 		657158DDA6BA291642A6DE66 /* Pods-Weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weather/Pods-Weather.debug.xcconfig"; sourceTree = "<group>"; };
 		7C80FA7B48D106B60C6CC70E /* Pods-Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weather/Pods-Weather.release.xcconfig"; sourceTree = "<group>"; };
 		85388027FA6C3B50B76A5E09 /* libPods-Weather.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Weather.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F507B7431B88775D003E7BF6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		F507B7451B8879C7003E7BF6 /* _LEMGeolocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _LEMGeolocation.h; sourceTree = "<group>"; };
+		F507B7461B8879C7003E7BF6 /* _LEMGeolocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _LEMGeolocation.m; sourceTree = "<group>"; };
+		F507B74B1B8879DF003E7BF6 /* LEMGeolocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEMGeolocation.h; sourceTree = "<group>"; };
+		F507B74C1B8879DF003E7BF6 /* LEMGeolocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEMGeolocation.m; sourceTree = "<group>"; };
+		F507B7521B887C96003E7BF6 /* POLCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POLCoreDataStack.h; sourceTree = "<group>"; };
+		F507B7531B887C96003E7BF6 /* POLCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POLCoreDataStack.m; sourceTree = "<group>"; };
+		F507B7551B887D3B003E7BF6 /* POLCoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POLCoreDataTableViewController.h; sourceTree = "<group>"; };
+		F507B7561B887D3B003E7BF6 /* POLCoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POLCoreDataTableViewController.m; sourceTree = "<group>"; };
+		F507B7581B887D8E003E7BF6 /* LEMMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEMMainViewController.h; sourceTree = "<group>"; };
+		F507B7591B887D8E003E7BF6 /* LEMMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEMMainViewController.m; sourceTree = "<group>"; };
+		F507B75B1B88893D003E7BF6 /* LEMSuggestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEMSuggestion.h; sourceTree = "<group>"; };
+		F507B75C1B88893D003E7BF6 /* LEMSuggestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEMSuggestion.m; sourceTree = "<group>"; };
+		F507B75E1B88FB37003E7BF6 /* LEMSuggestionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEMSuggestionModel.h; sourceTree = "<group>"; };
+		F507B75F1B88FB37003E7BF6 /* LEMSuggestionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEMSuggestionModel.m; sourceTree = "<group>"; };
+		F507B7621B890422003E7BF6 /* LEMNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEMNetworking.h; sourceTree = "<group>"; };
+		F507B7631B890422003E7BF6 /* LEMNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEMNetworking.m; sourceTree = "<group>"; };
 		F51C00CB1B8602B6001854E7 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F51C00CF1B8602B6001854E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F51C00D01B8602B6001854E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -44,8 +77,6 @@
 		F51C00DE1B8602B7001854E7 /* WeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F51C00E31B8602B7001854E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F51C00E41B8602B7001854E7 /* WeatherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherTests.m; sourceTree = "<group>"; };
-		F51C00EE1B860D21001854E7 /* LEMSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEMSearchTableViewController.h; sourceTree = "<group>"; };
-		F51C00EF1B860D21001854E7 /* LEMSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEMSearchTableViewController.m; sourceTree = "<group>"; };
 		F51C00F21B860F4A001854E7 /* LEMSuggestionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEMSuggestionsTableViewController.h; sourceTree = "<group>"; };
 		F51C00F31B860F4A001854E7 /* LEMSuggestionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEMSuggestionsTableViewController.m; sourceTree = "<group>"; };
 		F51C00F51B8611CE001854E7 /* UIViewController+Navigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Navigation.h"; sourceTree = "<group>"; };
@@ -54,6 +85,15 @@
 		F52024D21B87130C00AE9CBD /* LEMDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEMDetailViewController.h; sourceTree = "<group>"; };
 		F52024D31B87130C00AE9CBD /* LEMDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEMDetailViewController.m; sourceTree = "<group>"; };
 		F52024D41B87130C00AE9CBD /* LEMDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LEMDetailViewController.xib; sourceTree = "<group>"; };
+		F5A9F46C1B8B032300342AA7 /* RectangleMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RectangleMark.png; sourceTree = "<group>"; };
+		F5A9F46D1B8B032300342AA7 /* rectangleRed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rectangleRed@2x.png"; sourceTree = "<group>"; };
+		F5A9F46E1B8B032300342AA7 /* rectangleRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rectangleRed.png; sourceTree = "<group>"; };
+		F5A9F4721B8B033000342AA7 /* RectangleMark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RectangleMark@2x.png"; sourceTree = "<group>"; };
+		F5A9F4741B8B034900342AA7 /* rectangleBlue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rectangleBlue@2x.png"; sourceTree = "<group>"; };
+		F5A9F4751B8B034900342AA7 /* rectangleBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rectangleBlue.png; sourceTree = "<group>"; };
+		F5B4BAD31B877A760038FDD2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F5B4BAD51B877D520038FDD2 /* LEMAnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEMAnotation.h; sourceTree = "<group>"; };
+		F5B4BAD61B877D520038FDD2 /* LEMAnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEMAnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5B4BAD41B877A760038FDD2 /* MapKit.framework in Frameworks */,
 				E5B4D93BB3E2126B5F9B6AFD /* libPods-Weather.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,6 +119,7 @@
 		626F1AF53EB3FD03477C9A82 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F5B4BAD31B877A760038FDD2 /* MapKit.framework */,
 				85388027FA6C3B50B76A5E09 /* libPods-Weather.a */,
 			);
 			name = Frameworks;
@@ -90,6 +132,24 @@
 				7C80FA7B48D106B60C6CC70E /* Pods-Weather.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F507B7511B8879F3003E7BF6 /* Machine */ = {
+			isa = PBXGroup;
+			children = (
+				F507B7451B8879C7003E7BF6 /* _LEMGeolocation.h */,
+				F507B7461B8879C7003E7BF6 /* _LEMGeolocation.m */,
+			);
+			name = Machine;
+			sourceTree = "<group>";
+		};
+		F507B7611B89040B003E7BF6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F507B7621B890422003E7BF6 /* LEMNetworking.h */,
+				F507B7631B890422003E7BF6 /* LEMNetworking.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		F51C00C21B8602B6001854E7 = {
@@ -115,11 +175,14 @@
 		F51C00CD1B8602B6001854E7 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				F5A9F4781B8B0D0500342AA7 /* Resources */,
+				F507B7611B89040B003E7BF6 /* Utils */,
+				F51C00F81B8611D7001854E7 /* Categories */,
+				F52024DA1B87333200AE9CBD /* Models */,
 				F51C00F11B860E49001854E7 /* Controllers */,
 				F51C00D21B8602B6001854E7 /* AppDelegate.h */,
 				F51C00D31B8602B6001854E7 /* AppDelegate.m */,
 				F51C00F91B8620D4001854E7 /* LEMSettings.h */,
-				F51C00F81B8611D7001854E7 /* Categories */,
 				F51C00CE1B8602B6001854E7 /* Supporting Files */,
 				F51C00D51B8602B6001854E7 /* Images.xcassets */,
 				F51C00D71B8602B6001854E7 /* LaunchScreen.xib */,
@@ -156,8 +219,10 @@
 		F51C00F11B860E49001854E7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F51C00EE1B860D21001854E7 /* LEMSearchTableViewController.h */,
-				F51C00EF1B860D21001854E7 /* LEMSearchTableViewController.m */,
+				F507B7551B887D3B003E7BF6 /* POLCoreDataTableViewController.h */,
+				F507B7561B887D3B003E7BF6 /* POLCoreDataTableViewController.m */,
+				F507B7581B887D8E003E7BF6 /* LEMMainViewController.h */,
+				F507B7591B887D8E003E7BF6 /* LEMMainViewController.m */,
 				F51C00F21B860F4A001854E7 /* LEMSuggestionsTableViewController.h */,
 				F51C00F31B860F4A001854E7 /* LEMSuggestionsTableViewController.m */,
 				F52024D21B87130C00AE9CBD /* LEMDetailViewController.h */,
@@ -174,6 +239,38 @@
 				F51C00F61B8611CE001854E7 /* UIViewController+Navigation.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		F52024DA1B87333200AE9CBD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F507B7421B88775D003E7BF6 /* Model.xcdatamodeld */,
+				F507B7511B8879F3003E7BF6 /* Machine */,
+				F507B7521B887C96003E7BF6 /* POLCoreDataStack.h */,
+				F507B7531B887C96003E7BF6 /* POLCoreDataStack.m */,
+				F507B74B1B8879DF003E7BF6 /* LEMGeolocation.h */,
+				F507B74C1B8879DF003E7BF6 /* LEMGeolocation.m */,
+				F5B4BAD51B877D520038FDD2 /* LEMAnotation.h */,
+				F5B4BAD61B877D520038FDD2 /* LEMAnotation.m */,
+				F507B75B1B88893D003E7BF6 /* LEMSuggestion.h */,
+				F507B75C1B88893D003E7BF6 /* LEMSuggestion.m */,
+				F507B75E1B88FB37003E7BF6 /* LEMSuggestionModel.h */,
+				F507B75F1B88FB37003E7BF6 /* LEMSuggestionModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		F5A9F4781B8B0D0500342AA7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F5A9F46C1B8B032300342AA7 /* RectangleMark.png */,
+				F5A9F46D1B8B032300342AA7 /* rectangleRed@2x.png */,
+				F5A9F46E1B8B032300342AA7 /* rectangleRed.png */,
+				F5A9F4721B8B033000342AA7 /* RectangleMark@2x.png */,
+				F5A9F4741B8B034900342AA7 /* rectangleBlue@2x.png */,
+				F5A9F4751B8B034900342AA7 /* rectangleBlue.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,8 +355,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5A9F46F1B8B032300342AA7 /* RectangleMark.png in Resources */,
+				F5A9F4711B8B032300342AA7 /* rectangleRed.png in Resources */,
+				F5A9F4771B8B034900342AA7 /* rectangleBlue.png in Resources */,
+				F5A9F4701B8B032300342AA7 /* rectangleRed@2x.png in Resources */,
 				F51C00D91B8602B6001854E7 /* LaunchScreen.xib in Resources */,
+				F5A9F4731B8B033000342AA7 /* RectangleMark@2x.png in Resources */,
 				F52024D61B87130C00AE9CBD /* LEMDetailViewController.xib in Resources */,
+				F5A9F4761B8B034900342AA7 /* rectangleBlue@2x.png in Resources */,
 				F51C00D61B8602B6001854E7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,12 +414,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F51C00F01B860D21001854E7 /* LEMSearchTableViewController.m in Sources */,
+				F507B7571B887D3B003E7BF6 /* POLCoreDataTableViewController.m in Sources */,
 				F51C00F71B8611CE001854E7 /* UIViewController+Navigation.m in Sources */,
+				F507B75D1B88893D003E7BF6 /* LEMSuggestion.m in Sources */,
+				F5B4BAD71B877D520038FDD2 /* LEMAnotation.m in Sources */,
 				F51C00D41B8602B6001854E7 /* AppDelegate.m in Sources */,
 				F51C00F41B860F4A001854E7 /* LEMSuggestionsTableViewController.m in Sources */,
+				F507B7641B890422003E7BF6 /* LEMNetworking.m in Sources */,
 				F52024D51B87130C00AE9CBD /* LEMDetailViewController.m in Sources */,
+				F507B7601B88FB37003E7BF6 /* LEMSuggestionModel.m in Sources */,
 				F51C00D11B8602B6001854E7 /* main.m in Sources */,
+				F507B75A1B887D8E003E7BF6 /* LEMMainViewController.m in Sources */,
+				F507B7491B8879C7003E7BF6 /* _LEMGeolocation.m in Sources */,
+				F507B7441B88775D003E7BF6 /* Model.xcdatamodeld in Sources */,
+				F507B74D1B8879DF003E7BF6 /* LEMGeolocation.m in Sources */,
+				F507B7541B887C96003E7BF6 /* POLCoreDataStack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +631,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F507B7421B88775D003E7BF6 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F507B7431B88775D003E7BF6 /* Model.xcdatamodel */,
+			);
+			currentVersion = F507B7431B88775D003E7BF6 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F51C00C31B8602B6001854E7 /* Project object */;
 }

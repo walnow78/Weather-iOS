@@ -2,20 +2,14 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Geolocation" representedClassName="LEMGeolocation" syncable="YES">
         <attribute name="east" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" indexed="YES" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" indexed="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="north" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="south" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="west" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="temperature" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Temperature" inverseName="geolocation" inverseEntity="Temperature" syncable="YES"/>
-    </entity>
-    <entity name="Temperature" representedClassName="LEMTemperature" syncable="YES">
-        <attribute name="temperature" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="geolocation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Geolocation" inverseName="temperature" inverseEntity="Geolocation" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Geolocation" positionX="-63" positionY="-18" width="128" height="165"/>
-        <element name="Temperature" positionX="-54" positionY="45" width="128" height="75"/>
+        <element name="Geolocation" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>

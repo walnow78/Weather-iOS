@@ -15,5 +15,10 @@
 // Notifications
 
 #define MODEL_GEONAME_DID_CHANGE @"modelGeonameDidChange"
-#define MODEL_TEMPERATURE_DID_CHANGE @"modelTemperatureDidChange"
+#define TEMPERATURE_DID_CHANGE @"modelTemperatureDidChange"
 
+// Dictionary
+
+#define KEY_TEMPERATURE_NOTIFICATION @"keyTemperatureNotification"
+
+#define AUTO_SAVE_DELAY 5

@@ -13,10 +13,6 @@ const struct LEMGeolocationAttributes LEMGeolocationAttributes = {
 	.west = @"west",
 };
 
-const struct LEMGeolocationRelationships LEMGeolocationRelationships = {
-	.temperature = @"temperature",
-};
-
 @implementation LEMGeolocationID
 @end
 
@@ -197,17 +193,6 @@ const struct LEMGeolocationRelationships LEMGeolocationRelationships = {
 
 - (void)setPrimitiveWestValue:(double)value_ {
 	[self setPrimitiveWest:@(value_)];
-}
-
-@dynamic temperature;
-
-- (NSMutableSet*)temperatureSet {
-	[self willAccessValueForKey:@"temperature"];
-
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"temperature"];
-
-	[self didAccessValueForKey:@"temperature"];
-	return result;
 }
 
 @end
