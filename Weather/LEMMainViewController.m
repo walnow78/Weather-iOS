@@ -55,13 +55,16 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellId];
     }
     
     LEMGeolocation *current = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     cell.textLabel.text = current.name;
+    cell.detailTextLabel.text = current.desc;
+    
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
     return cell;
     
 }

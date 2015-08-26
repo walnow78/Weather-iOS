@@ -16,6 +16,7 @@
                             north:(double) north
                              west:(double) west
                              name:(NSString*) name
+                             desc:(NSString*) desc
                          latitude:(double) latitude
                         longitude:(double) longitude{
     
@@ -26,6 +27,7 @@
         _north = north;
         _west = west;
         _name = name;
+        _desc = desc;
         _latitude = latitude;
         _longitude = longitude;
     }
@@ -39,6 +41,7 @@
                                   north:(double) north
                                    west:(double) west
                                    name:(NSString*) name
+                                   desc:(NSString*) desc
                                latitude:(double) latitude
                               longitude:(double) longitude{
     
@@ -48,6 +51,7 @@
                                               north:north
                                                west:west
                                                name:name
+                                               desc:desc
                                            latitude:latitude
                                           longitude:longitude];
     

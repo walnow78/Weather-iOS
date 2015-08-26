@@ -48,27 +48,33 @@
       parameters:parameters
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              
+             NSLog(@"response: %@", responseObject);
+             
              [self.model removeAllObjects];
              
              NSDictionary *geonames = [responseObject objectForKey:@"geonames"];
              
              for (NSDictionary *dic in geonames) {
                  
-                 NSString *countryName = [dic objectForKey:@"countryName"];
-                 NSString *asciiName = [dic objectForKey:@"asciiName"];
-                 
                  NSDictionary *bbox = [dic objectForKey:@"bbox"];
                  
-                 LEMSuggestion *suggestion = [LEMSuggestion suggestionWithCountryId:[[dic objectForKey:@"countryId"] intValue]
-                                                                              South:[[bbox objectForKey:@"south"] doubleValue]
-                                                                               east:[[bbox objectForKey:@"east"] doubleValue]
-                                                                              north:[[bbox objectForKey:@"north"] doubleValue]
-                                                                               west:[[bbox objectForKey:@"west"] doubleValue]
-                                                                               name:[NSString stringWithFormat:@"%@ - %@", countryName, asciiName]
-                                                                           latitude:[[dic objectForKey:@"lat"] doubleValue]
-                                                                          longitude:[[dic objectForKey:@"lng"] doubleValue]];
-                 
-                 [self.model addObject:suggestion];
+                 if (bbox != nil) {
+                     
+                     NSString *countryName = [dic objectForKey:@"countryName"];
+                     NSString *asciiName = [dic objectForKey:@"asciiName"];
+                     
+                     LEMSuggestion *suggestion = [LEMSuggestion suggestionWithCountryId:[[dic objectForKey:@"countryId"] intValue]
+                                                                                  South:[[bbox objectForKey:@"south"] doubleValue]
+                                                                                   east:[[bbox objectForKey:@"east"] doubleValue]
+                                                                                  north:[[bbox objectForKey:@"north"] doubleValue]
+                                                                                   west:[[bbox objectForKey:@"west"] doubleValue]
+                                                                                   name:[NSString stringWithFormat:@"%@", asciiName]
+                                                                                   desc:[NSString stringWithFormat:@"%@", countryName]
+                                                                               latitude:[[dic objectForKey:@"lat"] doubleValue]
+                                                                              longitude:[[dic objectForKey:@"lng"] doubleValue]];
+                     
+                     [self.model addObject:suggestion];
+                 }
                  
              }
              

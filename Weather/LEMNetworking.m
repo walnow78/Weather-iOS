@@ -34,6 +34,8 @@
       parameters:parameters
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              
+             NSLog(@"response: %@", responseObject);
+             
              NSArray *weather = [responseObject objectForKey:@"weatherObservations"];
              
              double temperature = 0;

@@ -10,13 +10,14 @@
 @implementation LEMGeolocation
 
 +(instancetype) geolocationWithName:(NSString*) name
-                                latitude:(double) latitude
-                               longitude:(double) longitude
-                                   south:(double) south
-                                   north:(double) north
-                                    east:(double) east
-                                    west:(double) west
-                                 context:(NSManagedObjectContext*) context{
+                               desc:(NSString*) desc
+                           latitude:(double) latitude
+                          longitude:(double) longitude
+                              south:(double) south
+                              north:(double) north
+                               east:(double) east
+                               west:(double) west
+                            context:(NSManagedObjectContext*) context{
 
     LEMGeolocation *geo = [LEMGeolocation checkWithLatitude:latitude
                                                   Longitude:longitude
@@ -27,6 +28,7 @@
         geo = [LEMGeolocation insertInManagedObjectContext:context];
         
         geo.name = name;
+        geo.desc = desc;
         geo.latitudeValue = latitude;
         geo.longitudeValue = longitude;
         geo.southValue = south;

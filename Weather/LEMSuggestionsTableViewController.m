@@ -92,7 +92,7 @@
     LEMSuggestion *current = [self.model objectAtIndex:indexPath.row];
     
     cell.textLabel.text = current.name;
-    cell.detailTextLabel.text = current.name;
+    cell.detailTextLabel.text = current.desc;
     
     return cell;
 }
@@ -104,6 +104,7 @@
     LEMSuggestion *current = [self.model objectAtIndex:indexPath.row];
     
     LEMGeolocation *loc = [LEMGeolocation geolocationWithName:current.name
+                                                         desc:current.desc
                                                           latitude:current.latitude
                                                          longitude:current.longitude
                                                              south:current.south

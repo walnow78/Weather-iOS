@@ -16,6 +16,7 @@
 @property(nonatomic) double north;
 @property(nonatomic) double west;
 @property(nonatomic, copy) NSString *name;
+@property(nonatomic, copy) NSString *desc;
 @property(nonatomic) double longitude;
 @property(nonatomic) double latitude;
 
@@ -25,6 +26,7 @@
                             north:(double) north
                              west:(double) west
                              name:(NSString*) name
+                             desc:(NSString*) desc
                          latitude:(double) latitude
                         longitude:(double) longitude;
 
@@ -34,6 +36,7 @@
                                   north:(double) north
                                    west:(double) west
                                    name:(NSString*) name
+                                   desc:(NSString*) desc
                                latitude:(double) latitude
                               longitude:(double) longitude;
 

@@ -4,6 +4,7 @@
 @import CoreData;
 
 extern const struct LEMGeolocationAttributes {
+	__unsafe_unretained NSString *desc;
 	__unsafe_unretained NSString *east;
 	__unsafe_unretained NSString *latitude;
 	__unsafe_unretained NSString *longitude;
@@ -21,6 +22,10 @@ extern const struct LEMGeolocationAttributes {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) LEMGeolocationID* objectID;
+
+@property (nonatomic, strong) NSString* desc;
+
+//- (BOOL)validateDesc:(id*)value_ error:(NSError**)error_;
 
 @property (nonatomic, strong) NSNumber* east;
 
@@ -77,6 +82,9 @@ extern const struct LEMGeolocationAttributes {
 @end
 
 @interface _LEMGeolocation (CoreDataGeneratedPrimitiveAccessors)
+
+- (NSString*)primitiveDesc;
+- (void)setPrimitiveDesc:(NSString*)value;
 
 - (NSNumber*)primitiveEast;
 - (void)setPrimitiveEast:(NSNumber*)value;

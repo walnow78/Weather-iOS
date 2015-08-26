@@ -7,16 +7,13 @@
 //
 
 #import "AppDelegate.h"
-#import <AFNetworking/UIKit+AFNetworking.h>
-
+#import <AFNetworking/AFNetworking.h>
 #import "UIViewController+Navigation.h"
 #import "POLCoreDataStack.h"
 #import "LEMMainViewController.h"
 #import "LEMGeolocation.h"
 #import "LEMSettings.h"
 #import "LEMDetailViewController.h"
-
-#import "LEMSuggestionsTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -33,7 +30,13 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
+    // Init stack.
+    
     self.stack = [POLCoreDataStack coreDataStackWithModelName:@"Model"];
+    
+    // Monitoring activity
+    
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
     // Retrive data
     
@@ -48,20 +51,19 @@
                                                                               sectionNameKeyPath:nil
                                                                                        cacheName:nil];
     
+    // Get the last geolocation for detail view
+    
     LEMGeolocation *geolocation = [[self.stack executeFetchRequest:request
                                                        errorBlock:^(NSError *error) {
                                                            NSLog(@"Error retrieve geolocation");
-                                                           
                                                        }] lastObject];
     
+    // Check kind of device
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        
         [self configurationForPadWithFetch:fetch geolocation:geolocation];
-        
     }else{
-        
         [self conigurationforPhoneWithFetch:fetch];
-        
     }
     
     [self autoSave];

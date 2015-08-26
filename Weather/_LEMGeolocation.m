@@ -4,6 +4,7 @@
 #import "_LEMGeolocation.h"
 
 const struct LEMGeolocationAttributes LEMGeolocationAttributes = {
+	.desc = @"desc",
 	.east = @"east",
 	.latitude = @"latitude",
 	.longitude = @"longitude",
@@ -72,6 +73,8 @@ const struct LEMGeolocationAttributes LEMGeolocationAttributes = {
 
 	return keyPaths;
 }
+
+@dynamic desc;
 
 @dynamic east;
 
