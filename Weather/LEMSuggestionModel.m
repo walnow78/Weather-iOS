@@ -44,6 +44,8 @@
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
+    [manager.operationQueue cancelAllOperations];
+    
     [manager GET:API_URL_GEONAME
       parameters:parameters
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -62,8 +64,8 @@
                      
                      NSString *countryName = [dic objectForKey:@"countryName"];
                      NSString *asciiName = [dic objectForKey:@"asciiName"];
-                     
-                     LEMSuggestion *suggestion = [LEMSuggestion suggestionWithCountryId:[[dic objectForKey:@"countryId"] intValue]
+                    
+                     LEMSuggestion *suggestion = [LEMSuggestion suggestionWithGeoId:[[dic objectForKey:@"geonameId"] intValue]
                                                                                   South:[[bbox objectForKey:@"south"] doubleValue]
                                                                                    east:[[bbox objectForKey:@"east"] doubleValue]
                                                                                   north:[[bbox objectForKey:@"north"] doubleValue]
@@ -74,6 +76,7 @@
                                                                               longitude:[[dic objectForKey:@"lng"] doubleValue]];
                      
                      [self.model addObject:suggestion];
+                     
                  }
                  
              }

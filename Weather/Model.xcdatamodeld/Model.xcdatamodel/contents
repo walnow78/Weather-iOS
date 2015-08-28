@@ -3,6 +3,7 @@
     <entity name="Geolocation" representedClassName="LEMGeolocation" syncable="YES">
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="east" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="geoId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" indexed="YES" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" indexed="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -11,6 +12,6 @@
         <attribute name="west" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Geolocation" positionX="-63" positionY="-18" width="128" height="165"/>
+        <element name="Geolocation" positionX="-63" positionY="-18" width="128" height="180"/>
     </elements>
 </model>

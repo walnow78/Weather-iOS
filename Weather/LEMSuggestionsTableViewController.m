@@ -103,15 +103,16 @@
     
     LEMSuggestion *current = [self.model objectAtIndex:indexPath.row];
     
-    LEMGeolocation *loc = [LEMGeolocation geolocationWithName:current.name
-                                                         desc:current.desc
-                                                          latitude:current.latitude
-                                                         longitude:current.longitude
-                                                             south:current.south
-                                                             north:current.north
-                                                              east:current.east
-                                                              west:current.west
-                                                           context:self.context];
+    LEMGeolocation *loc = [LEMGeolocation geolocationWithGeoId:current.geoId
+                                                          name:current.name
+                                                          desc:current.desc
+                                                      latitude:current.latitude
+                                                     longitude:current.longitude
+                                                         south:current.south
+                                                         north:current.north
+                                                          east:current.east
+                                                          west:current.west
+                                                       context:self.context];
     
     [self.delegate suggestionsViewController:self didSelectSuggestion:loc];
     

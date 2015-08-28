@@ -10,7 +10,7 @@
 
 @interface LEMSuggestion : NSObject
 
-@property(nonatomic) int countryId;
+@property(nonatomic) int geoId;
 @property(nonatomic) double south;
 @property(nonatomic) double east;
 @property(nonatomic) double north;
@@ -20,24 +20,24 @@
 @property(nonatomic) double longitude;
 @property(nonatomic) double latitude;
 
--(instancetype) initWithCountryId:(int) countryId
-                            South:(double) south
-                             east:(double) east
-                            north:(double) north
-                             west:(double) west
-                             name:(NSString*) name
-                             desc:(NSString*) desc
-                         latitude:(double) latitude
-                        longitude:(double) longitude;
+-(instancetype) initWithGeoId:(int) geoId
+                       South:(double) south
+                        east:(double) east
+                       north:(double) north
+                        west:(double) west
+                        name:(NSString*) name
+                        desc:(NSString*) desc
+                    latitude:(double) latitude
+                   longitude:(double) longitude;
 
-+(instancetype) suggestionWithCountryId:(int) countryId
-                                  South:(double) south
-                                   east:(double) east
-                                  north:(double) north
-                                   west:(double) west
-                                   name:(NSString*) name
-                                   desc:(NSString*) desc
-                               latitude:(double) latitude
-                              longitude:(double) longitude;
++(instancetype) suggestionWithGeoId:(int) geoId
+                              South:(double) south
+                               east:(double) east
+                              north:(double) north
+                               west:(double) west
+                               name:(NSString*) name
+                               desc:(NSString*) desc
+                           latitude:(double) latitude
+                          longitude:(double) longitude;
 
 @end

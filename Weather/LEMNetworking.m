@@ -45,7 +45,10 @@
              }
              
              if ([weather count] > 0) {
+                 NSLog(@"TEMP: %f", temperature);
+                 
                  temperature = temperature / [weather count];
+                 
              }
              
              // Notify the changes

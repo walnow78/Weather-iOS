@@ -6,6 +6,7 @@
 extern const struct LEMGeolocationAttributes {
 	__unsafe_unretained NSString *desc;
 	__unsafe_unretained NSString *east;
+	__unsafe_unretained NSString *geoId;
 	__unsafe_unretained NSString *latitude;
 	__unsafe_unretained NSString *longitude;
 	__unsafe_unretained NSString *name;
@@ -34,6 +35,14 @@ extern const struct LEMGeolocationAttributes {
 - (void)setEastValue:(double)value_;
 
 //- (BOOL)validateEast:(id*)value_ error:(NSError**)error_;
+
+@property (nonatomic, strong) NSNumber* geoId;
+
+@property (atomic) int32_t geoIdValue;
+- (int32_t)geoIdValue;
+- (void)setGeoIdValue:(int32_t)value_;
+
+//- (BOOL)validateGeoId:(id*)value_ error:(NSError**)error_;
 
 @property (nonatomic, strong) NSNumber* latitude;
 
@@ -91,6 +100,12 @@ extern const struct LEMGeolocationAttributes {
 
 - (double)primitiveEastValue;
 - (void)setPrimitiveEastValue:(double)value_;
+
+- (NSNumber*)primitiveGeoId;
+- (void)setPrimitiveGeoId:(NSNumber*)value;
+
+- (int32_t)primitiveGeoIdValue;
+- (void)setPrimitiveGeoIdValue:(int32_t)value_;
 
 - (NSNumber*)primitiveLatitude;
 - (void)setPrimitiveLatitude:(NSNumber*)value;

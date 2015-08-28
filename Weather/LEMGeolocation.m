@@ -9,24 +9,25 @@
 
 @implementation LEMGeolocation
 
-+(instancetype) geolocationWithName:(NSString*) name
-                               desc:(NSString*) desc
-                           latitude:(double) latitude
-                          longitude:(double) longitude
-                              south:(double) south
-                              north:(double) north
-                               east:(double) east
-                               west:(double) west
-                            context:(NSManagedObjectContext*) context{
-
-    LEMGeolocation *geo = [LEMGeolocation checkWithLatitude:latitude
-                                                  Longitude:longitude
-                                                     context:context];
++(instancetype) geolocationWithGeoId:(int) geoId
+                                name:(NSString*) name
+                                desc:(NSString*) desc
+                            latitude:(double) latitude
+                           longitude:(double) longitude
+                               south:(double) south
+                               north:(double) north
+                                east:(double) east
+                                west:(double) west
+                             context:(NSManagedObjectContext*) context{
+    
+    LEMGeolocation *geo = [LEMGeolocation checkWithGeoId:geoId
+                                                 context:context];
     
     if (geo == nil) {
         
         geo = [LEMGeolocation insertInManagedObjectContext:context];
         
+        geo.geoIdValue = geoId;
         geo.name = name;
         geo.desc = desc;
         geo.latitudeValue = latitude;
@@ -41,16 +42,12 @@
     
 }
 
-+(LEMGeolocation*) checkWithLatitude:(double) latitude
-                           Longitude:(double) longitude
++(LEMGeolocation*) checkWithGeoId:(int) geoId
                               context:(NSManagedObjectContext*) context{
     
     NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:[LEMGeolocation entityName]];
-
-    NSPredicate *predLatitude = [NSPredicate predicateWithFormat:@"latitude == %lf", latitude];
-    NSPredicate *predLongitude = [NSPredicate predicateWithFormat:@"longitude == %lf", longitude];
     
-    req.predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[predLatitude, predLongitude]];
+    req.predicate = [NSPredicate predicateWithFormat:@"geoId == %d", geoId];
     
     NSError *err;
     

@@ -6,6 +6,7 @@
 const struct LEMGeolocationAttributes LEMGeolocationAttributes = {
 	.desc = @"desc",
 	.east = @"east",
+	.geoId = @"geoId",
 	.latitude = @"latitude",
 	.longitude = @"longitude",
 	.name = @"name",
@@ -42,6 +43,11 @@ const struct LEMGeolocationAttributes LEMGeolocationAttributes = {
 
 	if ([key isEqualToString:@"eastValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"east"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
+	if ([key isEqualToString:@"geoIdValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"geoId"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
@@ -94,6 +100,26 @@ const struct LEMGeolocationAttributes LEMGeolocationAttributes = {
 
 - (void)setPrimitiveEastValue:(double)value_ {
 	[self setPrimitiveEast:@(value_)];
+}
+
+@dynamic geoId;
+
+- (int32_t)geoIdValue {
+	NSNumber *result = [self geoId];
+	return [result intValue];
+}
+
+- (void)setGeoIdValue:(int32_t)value_ {
+	[self setGeoId:@(value_)];
+}
+
+- (int32_t)primitiveGeoIdValue {
+	NSNumber *result = [self primitiveGeoId];
+	return [result intValue];
+}
+
+- (void)setPrimitiveGeoIdValue:(int32_t)value_ {
+	[self setPrimitiveGeoId:@(value_)];
 }
 
 @dynamic latitude;
