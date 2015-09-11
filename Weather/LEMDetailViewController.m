@@ -67,7 +67,7 @@
 - (void) syncViewModel{
 
     self.title = self.model.name;
-    self.countryLabel.text = [NSString stringWithFormat:@"Country: %@", self.model.desc];
+    self.countryLabel.text = [NSString stringWithFormat:@"Country: %@",self.model.desc];
     
     [LEMNetworking syncTemperatureWithGeolocation:self.model];
     
